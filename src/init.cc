@@ -321,6 +321,8 @@ static ncclResult_t commAlloc(struct ncclComm* comm, struct ncclComm* parent, in
   NCCLCHECK(ncclNetInit(comm));
   INFO(NCCL_INIT, "Using network %s", comm->ncclNet->name);
 
+  INFO(NCCL_INIT, "Test buffered fwrite");
+
   if (parent && parent->config.splitShare) {
     if (parent->ncclNet != comm->ncclNet) {
       WARN("Split shares resources, but parent comm netName %s is different from child comm netName %s", parent->ncclNet->name, comm->ncclNet->name);
