@@ -129,7 +129,7 @@ void ncclDebugInit() {
     if (debugFn[0] != '\0') {
       FILE *file = fopen(debugFn, "w");
       if (file != nullptr) {
-        setbuf(file, nullptr); // disable buffering
+        setvbuf(file, nullptr, _IOFBF, BUFSIZ); // enable full buffering
         ncclDebugFile = file;
       }
     }
